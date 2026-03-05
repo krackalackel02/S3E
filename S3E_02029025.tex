@@ -1,0 +1,113 @@
+\documentclass[10pt, a4paper]{article}
+
+%----------------------------------------------------------------------------------------
+%   PACKAGES AND THEME SETUP
+%----------------------------------------------------------------------------------------
+\usepackage[left=1cm, right=1cm, top=0.8cm, bottom=0.8cm]{geometry} % Tight margins
+\usepackage{xcolor}   % Required for defining custom colors
+\usepackage{helvet}   % Uses Helvetica (similar to Arial/Imperial styling)
+\renewcommand{\familydefault}{\sfdefault} % Sets the default font to sans-serif
+\usepackage[skip=4pt plus 2pt]{parskip}  % Reduced paragraph spacing
+\usepackage{fancyhdr} % Custom headers/footers
+\usepackage{titlesec} % Custom section formatting
+\usepackage{enumitem} % For better list formatting
+\usepackage{graphicx}
+% Define Imperial College Navy Blue
+\definecolor{ImperialBlue}{RGB}{0, 0, 205}
+
+% Formatting section titles to match the color theme
+\titleformat{\section}
+  {\color{ImperialBlue}\large\bfseries}
+  {\thesection}{0.5em}{}[{\titlerule[0.6pt]}]
+\titlespacing*{\section}{0pt}{0.3em}{0.3em}
+
+\pagestyle{empty} 
+
+%----------------------------------------------------------------------------------------
+%   DOCUMENT START
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+
+%--- HEADER SECTION ---
+\begin{minipage}[t]{0.45\textwidth}
+    \vspace{0pt}
+    \includegraphics[width=5cm]{ICL_Logo_Blue_RGB.pdf}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.5\textwidth}
+    \vspace{0pt}
+    \raggedleft
+    \color{ImperialBlue}
+    {\large \textbf{S\textsuperscript{3}E Plan}}\\
+    {\small \textbf{Safety, Security, Sustainability and Ethics}}\\
+\end{minipage}
+
+% Author, CID, Email, Date in a single horizontal line below
+\vspace{0.05cm}
+\noindent
+\begin{minipage}[t]{0.25\textwidth}
+    \textbf{Author:} Paul Kallarackel
+\end{minipage}%
+\begin{minipage}[t]{0.25\textwidth}
+    \centering
+    \textbf{CID:} 02029025
+\end{minipage}%
+\begin{minipage}[t]{0.25\textwidth}
+    \centering
+    \textbf{Email:} pjk21@ic.ac.uk
+\end{minipage}%
+\begin{minipage}[t]{0.25\textwidth}
+    \raggedleft
+    \textbf{Date:} 3\textsuperscript{rd} February 2026
+\end{minipage}
+
+\vspace{0.15cm}
+{\color{ImperialBlue}\hrule height 1.2pt}
+\vspace{0.15cm}
+
+\textbf{Project (LRCC01):} Leveraging Low-Precision Hardware for High-Fidelity CFD: Integrating the Ozaki Scheme into Nektar++
+
+\section*{Safety}
+
+As a software-based computational project, there are no physical laboratory hazards or COSHH requirements, and no risk assessments are needed.
+\begin{itemize}[leftmargin=*, label={\color{ImperialBlue}\textbullet}, nosep, topsep=0pt]
+    \item The primary safety considerations are ergonomic hazards from prolonged computer work. Work will follow the College's Display Screen Equipment (DSE) guidelines, ensuring regular breaks and a correct workstation setup.
+\end{itemize}
+
+\section*{Security \& Data Management}
+
+This project is only focused on software engineering and computing. No sensitive, private, or classified information will be gathered, handled, or kept on file.
+\begin{itemize}[leftmargin=*, label={\color{ImperialBlue}\textbullet}, nosep, topsep=0pt]
+    \item \textbf{Data \& Code Generated:} Markdown project documentation, numerical benchmarking data in CSV format (performance metrics, execution times, error tolerances), and C++ source files (a fork/extension of the Nektar++ library).
+    \item \textbf{Storage \& Access:} Until it is published, only the student and supervisor will have access to the code, which will be version-controlled using Git and hosted on the College's GitHub Enterprise and GitLab servers in a private repository.  In accordance with Imperial's Research Data Management Policy, benchmark data will be saved on a OneDrive (1 TB) provided by the college to provide redundancy and security.
+    \item \textbf{Sharing \& Restrictions:} Open publication is not prohibited by export control, intellectual property, or HPC acceptable-use restrictions.  Any successfully integrated code will be returned under the same license since Nektar++ is open-source (MIT License). When the project is finished, benchmark datasets will be released to the public.
+    \item \textbf{Ethical \& Regulatory Compliance:} Since there are no human subjects or personal data involved, ethical approval from the College's Research Ethics Committee is not necessary.  Imperial's HPC acceptable-use policy and the College's ICT regulations will be followed for any computational activity on the RCS.
+\end{itemize}
+
+\section*{Sustainability}
+
+This project is strongly aligned with Imperial College London's \textit{Sustainability Strategy 2021--2026} (net zero by 2040; 15\% Scope~1 \& 2 reduction by 2025--26).  High-fidelity CFD is computationally costly and energy-intensive, especially when using Nektar++'s spectral/hp element approaches. The Ozaki approach was chosen because it offers a better energy-fidelity trade-off than merely lowering simulation precision by achieving double-precision accuracy through lower-precision processes.
+\begin{itemize}[leftmargin=*, label={\color{ImperialBlue}\textbullet}, nosep, topsep=0pt]
+    \item At similar power consumption, Tensor Cores provide significantly greater throughput than FP64 CUDA cores. Equivalent simulations are thought to finish in less wall-clock time, which lowers the overall energy used in each simulation.  The main sustainability parameter, Joules-per-simulation (time-to-solution x power draw), will be empirically validated.
+    \item In line with the Strategy's goal of resource efficiency, using AI-focused hardware for scientific computing increases the usefulness of current clusters and lowers the carbon footprint of large-scale fluid simulations.
+    \item In keeping with the College's aim to lowering Scope~2 emissions, GPU benchmark runs will be batched during off-peak RCS hours to limit idle compute time.
+\end{itemize}
+
+\section*{Ethics \& Societal Implications}
+
+The study uses the AREA (Anticipate, Reflect, Engage, Act) methodology in accordance with the EPSRC Framework for Responsible Research and Innovation and the Engineering Council UK's Statement of Ethical Principles.
+\begin{itemize}[leftmargin=*, label={\color{ImperialBlue}\textbullet}, nosep, topsep=0pt]
+    \item \textbf{Anticipate \& Reflect:} Although CFD has many uses, including defence, this work only focuses on fundamental linear algebra primitives. No defence or weaponry applications are being sought after or made possible by the technology, which is intrinsically neutral and application-agnostic.
+    \item \textbf{Engage \& Act:} Lowering the computational cost of high-fidelity CFD helps democratise access to advanced engineering tools, benefiting societal goals such as optimising wind turbine aerodynamics and designing low-emission aerospace vehicles. Findings will be shared openly with the supervisor and the Nektar++ community.
+\end{itemize}
+
+\section*{Required Resources}
+
+To complete this project successfully, the following resources are required:
+\begin{itemize}[leftmargin=*, label={\color{ImperialBlue}\textbullet}, nosep, topsep=0pt]
+    \item \textbf{Compute Access (from College):} Access to the Imperial Typhoon cluster, which is equipped with NVIDIA A40 GPUs (Ampere Tensor Cores), is sufficient for all benchmarking needs.
+    \item \textbf{Academic Guidance (from Supervisor):} Regular meetings (fortnightly minimum) to guide Ozaki scheme implementation, navigate the Nektar++ architecture, and review benchmark and accuracy results.
+\end{itemize}
+
+\end{document}
