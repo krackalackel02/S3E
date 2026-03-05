@@ -1,3 +1,6 @@
+*.pdf
+!ICL_LOGO_Blue_RGB.pdf
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof

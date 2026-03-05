@@ -1,0 +1,22 @@
+{
+    "latex-workshop.latex.recipes": [
+  {
+    "name": "pdflatex",
+    "tools": ["pdflatex"]
+  }
+],
+"latex-workshop.latex.tools": [
+  {
+    "name": "pdflatex",
+    "command": "pdflatex",
+    "args": [
+      "--max-print-line=10000",
+      "-synctex=1",
+      "-interaction=nonstopmode",
+      "-file-line-error",
+      "%DOCFILE%"
+    ],
+    "latex-workshop.latex.autoBuild.run": "onSave",
+  }
+]
+}
